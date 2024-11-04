@@ -43,7 +43,7 @@ experience_type_chain = (
 negative_airline_fault_chain = PromptTemplate.from_template(
     """You are an expert at airline's customer services. \
 If their dissatisfaction is the airline's fault from the following text,respond with reasoning
-Respond professionally as an airline's customer services. Respond in first-person mode.
+Respond professionally as an airline's customer services. Respond in first-person mode but exclude your name.
 
 Your response should follow these guidelines:
     1. Show sympathies professionally and inform the user that customer service will contact them soon
@@ -60,7 +60,7 @@ Text:
 negative_not_airline_fault_chain = PromptTemplate.from_template(
     """You are an expert at airline's customer services. \
 If their dissatisfaction is beyond the airline's control from the following text, respond with reasoning.
-Respond professionally as an airline's customer services. Respond in first-person mode.
+Respond professionally as an airline's customer services. Respond in first-person mode but exclude your name.
 
 Your response should follow these guidelines:
     1. Show sympathies professionally but explain that the airline is not liable in such situations
@@ -76,6 +76,7 @@ Text:
 positive_chain = PromptTemplate.from_template(
     """You are an expert at airline's customer services.
     Given the text below, thank them for their feedback and for choosing to fly with the airline.
+    Exclude your name.
 
     Your response should follow these guidelines:
     1. Thank them for their feedback and for choosing to fly with the airline.
