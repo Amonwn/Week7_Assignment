@@ -107,3 +107,6 @@ langchain.debug = False #if change to True would be much more useful esp. for th
 
 full_chain.invoke({"request": prompt})
 
+
+### Display
+st.write(response)
