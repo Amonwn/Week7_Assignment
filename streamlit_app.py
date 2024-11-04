@@ -42,7 +42,8 @@ experience_type_chain = (
 #2nd chain
 negative_airline_fault_chain = PromptTemplate.from_template(
     """You are an expert at airline's customer services. \
-If their dissatisfaction is the airline's fault from the following text,respond with reasoning
+If their dissatisfaction is the airline's fault from the following text,respond with showing sympathies and 
+inform the user that customer service team will contact them for further information.
 Respond professionally as an airline's customer services. Respond in first-person mode but exclude your name.
 
 Your response should follow these guidelines:
