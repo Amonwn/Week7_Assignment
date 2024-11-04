@@ -31,3 +31,79 @@ Text:
 
 """
 
+
+#1st chain
+experience_type_chain = (
+    PromptTemplate.from_template(airline_template) #take the template
+    | llm #use the model
+    | StrOutputParser() #give the output
+)
+
+#2nd chain
+negative_airline_fault_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services. \
+Determine the cause of their dissatisfaction is the airline's fault or beyond the airline's control from the following text.
+Respond with reasoning. Respond professionally as an airline's customer services. Respond in first-person mode.
+
+Your response should follow these guidelines:
+    1. Show sympathies professionally and inform the user that customer service will contact them soon
+    2. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
+
+
+#3rd chain
+negative_not_airline_fault_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services. \
+Determine the cause of their dissatisfaction is the airline's fault or beyond the airline's control from the following text.
+Respond with reasoning. Respond professionally as an airline's customer services. Respond in first-person mode.
+
+Your response should follow these guidelines:
+    1. Show sympathies professionally but explain that the airline is not liable in such situations
+    2. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
+
+#4th chain
+positive_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services.
+    Given the text below, thank them for their feedback and for choosing to fly with the airline.
+
+    Your response should follow these guidelines:
+    1. Thank them for their feedback and for choosing to fly with the airline.
+    2. Respond professionally as an expert at airline's customer services.
+    3. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
+
+
+from langchain_core.runnables import RunnableBranch
+
+### Routing/Branching chain
+branch = RunnableBranch(
+    (lambda x: "negative caused by the airline" in x["experience_type"].lower(), negative_airline_fault_chain),
+    (lambda x: "negative caused beyond the airline's control" in x["experience_type"].lower(), negative_not_airline_fault_chain),
+    lambda x: "positive" in x["experience_type"].lower(),positive_chain,
+)
+
+### Put all the chains together 
+full_chain = {"experience_type": experience_type_chain, "text": lambda x: x["request"]} | branch
+
+
+import langchain
+langchain.debug = False #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
+
+full_chain.invoke({"request": prompt})
+
