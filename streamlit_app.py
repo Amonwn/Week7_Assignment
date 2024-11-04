@@ -47,7 +47,7 @@ Respond professionally as an airline's customer services. Respond in first-perso
 
 Your response should follow these guidelines:
     1. Show sympathies professionally and inform the user that customer service will contact them soon
-    2. Address the customer directly
+    2. Address the customer directly but exclude your name
 
 Text:
 {text}
@@ -64,7 +64,7 @@ Respond professionally as an airline's customer services. Respond in first-perso
 
 Your response should follow these guidelines:
     1. Show sympathies professionally but explain that the airline is not liable in such situations
-    2. Address the customer directly
+    2. Address the customer directly but exclude your name
 
 Text:
 {text}
@@ -80,7 +80,7 @@ positive_chain = PromptTemplate.from_template(
     Your response should follow these guidelines:
     1. Thank them for their feedback and for choosing to fly with the airline.
     2. Respond professionally as an expert at airline's customer services.
-    3. Address the customer directly
+    3. Address the customer directly but exclude your name
 
 Text:
 {text}
