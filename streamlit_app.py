@@ -8,6 +8,8 @@ st.title("Share with us your experience of the latest trip")
 my_secret_key = st.secrets['MyOpenAIKey']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
+prompt = st.text_input("We want to hear from you!", " ")
+
 ### OpenAI model
 client = OpenAI()
 response = client.chat.completions.create(
