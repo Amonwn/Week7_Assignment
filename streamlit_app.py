@@ -26,3 +26,11 @@ Text:
 {request}
 
 """
+
+#1st chain
+experience_type_chain = (
+    PromptTemplate.from_template(airline_template) #take the template
+    | llm #use the model
+    | StrOutputParser() #give the output
+)
+
