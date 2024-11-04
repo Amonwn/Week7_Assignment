@@ -17,7 +17,7 @@ from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
 
 ### Create the LLM API object
-llm = OpenAI(openai_api_key=my_secret_key, model="gpt-4")
+llm = OpenAI(openai_api_key=my_secret_key)
 # llm = ChatOpenAI(openai_api_key=openai_api_key, model="gpt-4")
 
 ### Create a template to handle the case
