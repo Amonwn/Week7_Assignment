@@ -45,7 +45,24 @@ Determine the cause of their dissatisfaction is the airline's fault or beyond th
 Respond with reasoning. Respond professionally as an airline's customer services. Respond in first-person mode.
 
 Your response should follow these guidelines:
-    1. Offer sympathies professionally and inform the user that customer service will contact them soon
+    1. Show sympathies professionally and inform the user that customer service will contact them soon
+    2. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
+
+
+#3rd chain
+negative_not_airline_fault_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services. \
+Determine the cause of their dissatisfaction is the airline's fault or beyond the airline's control from the following text.
+Respond with reasoning. Respond professionally as an airline's customer services. Respond in first-person mode.
+
+Your response should follow these guidelines:
+    1. Show sympathies professionally but explain that the airline is not liable in such situations
     2. Address the customer directly
 
 Text:
