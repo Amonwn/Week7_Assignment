@@ -11,6 +11,8 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 prompt = st.text_input("We want to hear from you!", " ")
 
 from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
 
 
