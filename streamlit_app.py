@@ -95,7 +95,7 @@ from langchain_core.runnables import RunnableBranch
 branch = RunnableBranch(
     (lambda x: "negative caused by the airline" in x["experience_type"].lower(), negative_airline_fault_chain),
     (lambda x: "negative caused beyond the airline's control" in x["experience_type"].lower(), negative_not_airline_fault_chain),
-    lambda x: "positive" in x["experience_type"].lower(),positive_chain,
+    (lambda x: "positive" in x["experience_type"].lower(),positive_chain),
 )
 
 ### Put all the chains together 
