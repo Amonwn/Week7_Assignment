@@ -48,7 +48,7 @@ Respond professionally as an airline's customer services. Respond in first-perso
 
 Your response should follow these guidelines:
     1. Show sympathies professionally
-    2. Inform the user that customer service team will contact them soon
+    2. Assure the user that our customer service team will contact them soon to resolve the issue or discuss possible compensation
     3. Address the customer directly but exclude your name
 
 Text:
