@@ -18,4 +18,11 @@ from langchain_core.output_parsers import StrOutputParser
 llm = OpenAI(openai_api_key=my_secret_key, model="gpt-4o-mini")
 # llm = ChatOpenAI(openai_api_key=openai_api_key, model="gpt-4")
 
+### Create a template to handle the case
+airline_template = """You are an expert at airline's customer services.
+From the following text, determine whether the user's experiences is positive or negative.
 
+Text:
+{request}
+
+"""
