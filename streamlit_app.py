@@ -23,7 +23,7 @@ llm = OpenAI(openai_api_key=my_secret_key, model="gpt-4o-mini")
 ### Create a template to handle the case
 airline_template = """You are an expert at airline's customer services.
 From the following text, determine whether the user's experiences is positive or negative.
-If negative, determine whether the negarive experiences caused by the airline(e.g., lost luggage) 
+If negative, determine whether the negative experiences caused by the airline(e.g., lost luggage) 
 or beyond the airline's control(e.g., a weather-related delay).
 
 Text:
@@ -86,3 +86,16 @@ Text:
 
 """
 ) | llm
+
+
+from langchain_core.runnables import RunnableBranch
+
+### Routing/Branching chain
+branch = RunnableBranch(
+    (lambda x: "negative caused by the airline" in x["experience_type"].lower(), negative_airline_fault_chain),
+    (lambda x: "negative caused beyond the airline's control" in x["experience_type"].lower(), negative_not_airline_fault_chain),
+    positive_chain,
+)
+
+### Put all the chains together 
+full_chain = {"experience_type": experience_type_chain, "text": lambda x: x["request"]} | branch
