@@ -17,8 +17,8 @@ from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
 
 ### Create the LLM API object
-llm = OpenAI(openai_api_key=my_secret_key)
-# llm = ChatOpenAI(openai_api_key=openai_api_key, model="gpt-4")
+#llm = OpenAI(openai_api_key=my_secret_key)
+llm = ChatOpenAI(openai_api_key=my_secret_key, model="gpt-4")
 
 ### Create a template to handle the case
 airline_template = """You are a professional customer service team at airline's customer services.
@@ -106,7 +106,7 @@ full_chain = {"experience_type": experience_type_chain, "text": lambda x: x["req
 
 
 import langchain
-langchain.debug = True #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
+langchain.debug = False #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
 
 response = full_chain.invoke({"request": prompt})
 
