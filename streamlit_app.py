@@ -9,7 +9,7 @@ my_secret_key = st.secrets['MyOpenAIKey']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
 prompt = st.text_input("We want to hear from you!", " ")
-
+"""
 from langchain.llms import OpenAI
 #from langchain.llms import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -107,4 +107,5 @@ import langchain
 langchain.debug = False #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
 
 full_chain.invoke({"request": prompt})
+"""
 """
