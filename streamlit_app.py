@@ -71,4 +71,18 @@ Text:
 """
 ) | llm
 
+#4th chain
+positive_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services.
+    Given the text below, thank them for their feedback and for choosing to fly with the airline.
 
+    Your response should follow these guidelines:
+    1. Thank them for their feedback and for choosing to fly with the airline.
+    2. Respond professionally as an expert at airline's customer services.
+    3. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
