@@ -109,4 +109,4 @@ full_chain.invoke({"request": prompt})
 
 
 ### Display
-st.write(response)
+st.write(full_chain)
