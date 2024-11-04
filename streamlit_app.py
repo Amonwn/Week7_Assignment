@@ -5,9 +5,10 @@ import os
 st.title("Share with us your experience of the latest trip")
 
 ### Load your API Key
-os.environ["OPENAI_API_KEY"] = st.secrets["OpenAIkey"]
+my_secret_key = st.secrets['MyOpenAIKey']
+os.environ["OPENAI_API_KEY"] = my_secret_key
 
-### OpenAI stuff
+### OpenAI model
 client = OpenAI()
 response = client.chat.completions.create(
   model="gpt-4o-mini",
