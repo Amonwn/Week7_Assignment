@@ -106,7 +106,7 @@ full_chain = {"experience_type": experience_type_chain, "text": lambda x: x["req
 
 
 import langchain
-langchain.debug = False #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
+langchain.debug = True #if change to True would be much more useful esp. for the project to see how the codes work >> we can see which model is used, in case we want to change the model
 
 response = full_chain.invoke({"request": prompt})
 
