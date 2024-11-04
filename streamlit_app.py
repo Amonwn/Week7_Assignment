@@ -9,7 +9,7 @@ my_secret_key = st.secrets['MyOpenAIKey']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
 prompt = st.text_input("Your experiences are valuable to us!", " ")
-
+"""
 from langchain.llms import OpenAI
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -29,4 +29,5 @@ or beyond the airline's control(e.g., a weather-related delay).
 Text:
 {request}
 
+"""
 """
