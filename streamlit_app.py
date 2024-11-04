@@ -11,13 +11,14 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 prompt = st.text_input("We want to hear from you!", " ")
 
 from langchain.llms import OpenAI
+rom langchain.llms import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_core.output_parsers import StrOutputParser
 
 
 ### Create the LLM API object
-llm = OpenAI(openai_api_key=my_secret_key, model="gpt-4")
+llm = ChatOpenAI(openai_api_key=my_secret_key, model="gpt-4")
 # llm = ChatOpenAI(openai_api_key=openai_api_key, model="gpt-4")
 
 ### Create a template to handle the case
