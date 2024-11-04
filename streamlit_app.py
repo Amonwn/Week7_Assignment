@@ -23,6 +23,8 @@ llm = OpenAI(openai_api_key=my_secret_key, model="gpt-4o-mini")
 ### Create a template to handle the case
 airline_template = """You are an expert at airline's customer services.
 From the following text, determine whether the user's experiences is positive or negative.
+If negative, determine whether the negarive experiences caused by the airline(e.g., lost luggage) 
+or beyond the airline's control(e.g., a weather-related delay).
 
 Text:
 {request}
@@ -35,4 +37,21 @@ experience_type_chain = (
     | llm #use the model
     | StrOutputParser() #give the output
 )
+
+#2nd chain
+negative_airline_fault_chain = PromptTemplate.from_template(
+    """You are an expert at airline's customer services. \
+Determine the cause of their dissatisfaction is the airline's fault or beyond the airline's control from the following text.
+Respond with reasoning. Respond professionally as an airline's customer services. Respond in first-person mode.
+
+Your response should follow these guidelines:
+    1. Offer sympathies professionally and inform the user that customer service will contact them soon
+    2. Address the customer directly
+
+Text:
+{text}
+
+"""
+) | llm
+
 
